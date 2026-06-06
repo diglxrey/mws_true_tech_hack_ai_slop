@@ -4,6 +4,10 @@
 
 Подробнее про Docker, Dex и «хвост» API без UI: папка [`description/`](description/).
 
+## Сертификат участника
+
+![Сертификат участника True Tech Hack 2026](assets/certificate.jpg)
+
 ## Быстрый старт (Docker)
 
 1. `cp .env.example .env` и заполните как минимум `MWS_*`, `AUTH_SECRET` (секреты провайдеров — плейсхолдеры вида `insert-your-key` в примере).
