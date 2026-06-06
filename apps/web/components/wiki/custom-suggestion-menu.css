@@ -1,0 +1,86 @@
+.wiki-slash-menu-popover {
+  height: min(24rem, calc(100vh - 50px)) !important;
+  max-height: calc(100vh - 50px) !important;
+  max-width: min(28rem, calc(100vw - 24px));
+  overflow: hidden !important;
+}
+
+.wiki-inline-menu-popover {
+  max-height: min(20rem, calc(100vh - 80px)) !important;
+  max-width: min(28rem, calc(100vw - 24px));
+  overflow: hidden !important;
+}
+
+.wiki-slash-menu-popover > .bn-suggestion-menu {
+  height: 100%;
+  max-height: none;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.wiki-inline-menu-popover > .bn-suggestion-menu {
+  max-height: min(20rem, calc(100vh - 80px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.custom-suggestion-menu-item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.custom-suggestion-menu-item .bn-mt-suggestion-menu-item-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.custom-suggestion-menu-item:hover {
+  background-color: #f5f7fa;
+}
+
+.custom-suggestion-menu-item.selected {
+  background-color: #f0f1f3;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  .custom-suggestion-menu-item:hover {
+    background-color: #374151;
+  }
+
+  .custom-suggestion-menu-item.selected {
+    background-color: #4b5563;
+  }
+}
+
+.custom-suggestion-menu-loader {
+  padding: 12px;
+  justify-content: center;
+}
+
+.bn-mt-suggestion-menu-badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: #d8d2fc;
+  color: #5e4ad3;
+}
+
+.bn-container a[href^="/wiki/"] {
+  color: #2563eb;
+  text-decoration: none;
+  background: rgba(59, 130, 246, 0.12);
+  border-radius: 6px;
+  padding: 0 4px;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.bn-container a[href^="/wiki/"]:hover {
+  color: #1d4ed8;
+  background: rgba(59, 130, 246, 0.18);
+}

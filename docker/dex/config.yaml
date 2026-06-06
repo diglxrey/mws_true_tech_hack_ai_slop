@@ -1,0 +1,77 @@
+issuer: http://localhost:5556/dex
+
+storage:
+  type: sqlite3
+  config:
+    file: /var/dex/dex.db
+
+web:
+  http: 0.0.0.0:5556
+
+logger:
+  level: info
+  format: text
+
+oauth2:
+  skipApprovalScreen: true
+  responseTypes:
+    - code
+
+# Enable local user/password database (dev only — replace with LDAP/SAML in production)
+enablePasswordDB: true
+
+# Dev static users.
+# Password hashes are bcrypt cost-10.
+# To regenerate: pnpm -w add -D bcryptjs && node -e "console.log(require('bcryptjs').hashSync('your-password', 10))"
+# admin@local  password: admin123
+# user@local   password: user123
+staticPasswords:
+#  - email: "admin@local.com"
+#    hash: "$2b$10$eQ4LSfqI.msbBT/rBKuLyOoV5M6VU/f2u.8VY4B.kCxddwCHVmYsK"
+#    username: "Admin"
+#    userID: "00000000-0000-0000-0000-000000000001"
+#  - email: "user@local.com"
+#    hash: "$2b$10$p1MDyuHBCiMt.eNmjfTpn.0mdQNY84V9N4QfVP9blx44oCwe0oIUO"
+#    username: "User"
+#    userID: "00000000-0000-0000-0000-000000000002"
+- email: "admin@example.com"
+  # bcrypt hash for 'password'
+  hash: "$2b$10$vBvINTHbkxcvnezuIpY1e.13g9tg0PexJGbSt7k3CxYid01824Svi"
+  username: "admin"
+  userID: "08a8684b-db88-4b73-90a9-3cd1661f5466"
+  # Used by the application to grant admin rights
+  groups:
+  - admins
+
+- email: "user@example.com"
+  # bcrypt hash for 'password'
+  hash: "$2b$10$vBvINTHbkxcvnezuIpY1e.13g9tg0PexJGbSt7k3CxYid01824Svi"
+  username: "basicuser"
+  userID: "5e4d284a-38d5-4556-974d-44a50d268d83"
+  # Used by the application to grant standard rights
+  groups:
+  - users
+- email: "user2@example.com"
+  # bcrypt hash for 'password'
+  hash: "$2b$10$vBvINTHbkxcvnezuIpY1e.13g9tg0PexJGbSt7k3CxYid01824Svi"
+  username: "basicuser2"
+  userID: "461a973c-419d-4e96-8812-2d10856bc836"
+  # Used by the application to grant standard rights
+  groups:
+  - users
+
+# Static OAuth2 clients
+staticClients:
+  # Web app (Authorization Code + PKCE via Auth.js)
+  - id: snippeter-web
+    name: Snippeter Web
+    secret: snippeter-web-secret-dev
+    redirectURIs:
+      - http://localhost:3000/api/auth/callback/dex
+      # Docker stack: Next behind nginx on host port 80 (see docker-compose.app.yml)
+      - http://localhost/api/auth/callback/dex
+    grantTypes:
+      - authorization_code
+      - refresh_token
+
+connectors: []

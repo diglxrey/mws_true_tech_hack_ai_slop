@@ -1,0 +1,60 @@
+# Application stack (API + Next.js + nginx). API listens on 3001 only inside the compose network (nginx → /api/v1). Use with base infra:
+#   docker compose -f docker-compose.yml -f docker-compose.app.yml up -d --build
+#
+# Before first run: copy `.env.example` → `.env` and `apps/web/.env.example` → `apps/web/.env.local`.
+# Set Docker URLs (see comments in those files). Migrations run automatically when API starts.
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    env_file:
+      - .env
+    environment:
+      PORT: "3001"
+      # Browser on :80 (nginx → /api/v1) + optional direct Next on :3000 during dev
+      CORS_ORIGIN: http://localhost,http://localhost:3000
+      META_DATABASE_URL: postgresql://snippeter:snippeter@postgres-meta:5432/snippeter_meta
+      REDIS_URL: redis://redis:6379
+      S3_ENDPOINT: http://minio:9000
+      OIDC_JWKS_URI: http://dex:5556/dex/keys
+      API_URL_INTERNAL: http://api:3001
+    depends_on:
+      postgres-meta:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      dex:
+        condition: service_healthy
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.web
+      args:
+        # Same origin as nginx :80 — browser WS/ссылки на /api/v1/* идут через reverse proxy
+        NEXT_PUBLIC_API_URL: http://localhost
+    env_file:
+      - .env
+    environment:
+      # BFF `/api/backend/*` must reach Nest by Docker DNS, not localhost:80 inside this container
+      API_URL_INTERNAL: http://api:3001
+      AUTH_URL: http://localhost
+      AUTH_TRUST_HOST: "true"
+      # Server-side OIDC calls inside the container must use Docker DNS, not localhost
+      OIDC_ISSUER_INTERNAL: http://dex:5556/dex
+    depends_on:
+      - api
+
+  nginx:
+    image: nginx:1.27-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - web
+      - api

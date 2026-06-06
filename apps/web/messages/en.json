@@ -1,0 +1,135 @@
+{
+  "auth": {
+    "signOut": "Sign out",
+    "signIn": "Sign in to continue",
+    "signInWithDex": "Sign in with Dex",
+    "appName": "Snippeter"
+  },
+  "wiki": {
+    "title": "Wiki",
+    "newPage": "New page",
+    "searchPages": "Search pages\u2026",
+    "loading": "Loading\u2026",
+    "noResults": "No results",
+    "noPages": "No pages yet",
+    "pageGraph": "Page graph",
+    "untitled": "Untitled",
+    "deleteConfirm": "Delete page \"{title}\"? This cannot be undone.",
+    "deleteFailed": "Failed to delete page",
+    "clickToDelete": "Click to show delete, then confirm",
+    "deletePage": "Delete page",
+    "viewPageGraph": "View page graph \u2192",
+    "createCollaborate": "Create and collaborate on wiki pages. Use the sidebar to navigate or create your first page."
+  },
+  "graph": {
+    "title": "Page Graph",
+    "loading": "Loading graph\u2026",
+    "empty": "No pages yet \u2014 create some pages and link them to see the graph.",
+    "pages": "{count} pages",
+    "tags": "{count} tags",
+    "links": "{count} links"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "tryAgain": "Try again"
+  },
+  "ai": {
+    "title": "AI Generate",
+    "prompt": "What should I write? e.g. \u2018Write a summary of our Q3 goals\u2019",
+    "stop": "Stop",
+    "generate": "Generate",
+    "accept": "Accept",
+    "hint": "Cmd+Enter to generate \u00b7 Accept inserts at cursor"
+  },
+  "comments": {
+    "title": "Comments",
+    "loading": "Loading\u2026",
+    "empty": "No comments yet",
+    "reply": "Reply",
+    "cancel": "Cancel",
+    "send": "Send",
+    "placeholder": "Add a comment\u2026",
+    "submit": "Comment"
+  },
+  "versions": {
+    "title": "Version History",
+    "checkpoint": "Save a named checkpoint",
+    "placeholder": "e.g. v1 release",
+    "loading": "Loading\u2026",
+    "empty": "No saved versions yet",
+    "version": "Version {num}",
+    "restore": "Restore this version",
+    "saveError": "Failed to save version",
+    "restoreError": "Failed to restore version"
+  },
+  "mwsConfig": {
+    "title": "Configure MWS Table",
+    "datasheet": "Datasheet",
+    "selectDatasheet": "Select a datasheet\u2026",
+    "enterIdDirectly": "or enter datasheet ID directly",
+    "enterDstId": "Enter datasheet ID",
+    "viewId": "View ID (optional)",
+    "filterFormula": "Filter formula (optional)",
+    "recordsPerPage": "Records per page",
+    "refreshInterval": "Refresh interval (s)",
+    "allowEdit": "Allow editing records back to MWS",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saving": "Saving\u2026",
+    "saveError": "Failed to save configuration. Please try again."
+  },
+  "language": {
+    "switch": "Language",
+    "en": "English",
+    "ru": "\u0420\u0443\u0441\u0441\u043a\u0438\u0439"
+  },
+  "home": {
+    "heroTitle": "<primary>AI</primary> SLOP",
+    "heroSubtitle": "Gather knowledge, tables, and notes in one place. Below — where to go and what the wiki can do, in plain words.",
+    "startHeading": "Where to start",
+    "themeHint": "Tired of a bright screen? Press <kbd>d</kbd> — the theme will switch.",
+    "links": {
+      "wiki": {
+        "title": "Wiki",
+        "description": "All pages, sidebar navigation, and the editor — start here."
+      },
+      "graph": {
+        "title": "Page graph",
+        "description": "A visual map of how pages link to each other."
+      }
+    },
+    "reference": {
+      "whatHappensTitle": "What happens here",
+      "whatHappensIntro": "Snippeter is a wiki where pages can hold not only text but also <strong>live data</strong> from tables, links between notes, and a comfortable editor. Below — short, without a “developer manual”.",
+      "mwsTitle": "Data from tables (MWS)",
+      "mwsBody": "The service connects to your spreadsheets via Fusion: you can pull lists, fields, rows, single values, and aggregates (sum, average, and so on). Requests go through the app backend; some responses are cached so pages open faster. You use the familiar UI in the browser — network complexity stays under the hood.",
+      "wikiPagesTitle": "Wiki pages",
+      "wikiPagesBody": "Pages are stored in a database: you can create, change title and layout, delete softly (without breaking history where that is supported). Text is edited like a collaborative document: changes are periodically saved to the server. If you rename a page, links like <code>[[Old page title]]</code> will follow the new name — no need to fix every link by hand.",
+      "tableBlockTitle": "A table inside the text",
+      "tableBlockBody": "In the editor you can insert a real MWS table block: choose table, view, filter, and how many rows to show per page. There is refresh on demand and, if you want, cell editing with format checks (phone, email, link). You can also insert a single value or an aggregate in a line — like a short snippet in a paragraph.",
+      "tableBlockHint": "Tip: type <code>/mws table</code> or use ⌘/Ctrl+1 — see the table below.",
+      "savingTitle": "Saving and “draft locally”",
+      "savingBody": "After a short pause in typing, text syncs to the server — you do not need to hit Save every time. If the connection drops, a draft may stay in your browser and when you open the page it can offer to restore — so you do not lose a thought by accident.",
+      "slashMenuTitle": "Slash menu",
+      "slashMenuBody": "Type <code>/</code> on an empty line — a menu appears: MWS table, callout, external embed, AI generation, plus regular blocks — headings, lists, code, and more. It is faster than hunting for buttons on the toolbar.",
+      "hotkeysTitle": "Keyboard shortcuts",
+      "hotkeysIntro": "A few familiar shortcuts save clicks — on Mac ⌘ is common, on Windows/Linux Ctrl.",
+      "hotkeysColShortcut": "Shortcut",
+      "hotkeysColAction": "What it does",
+      "hotkeysRow1Shortcut": "⌘-⌥-1 / Ctrl+Alt+1",
+      "hotkeysRow1Desc": "Insert MWS table",
+      "hotkeysRow2Shortcut": "⌘-⌥-C / Ctrl+Alt+C",
+      "hotkeysRow2Desc": "Insert callout",
+      "hotkeysRow3Shortcut": "⌘-⌥-3 / Ctrl+Alt+3",
+      "hotkeysRow3Desc": "AI request from context",
+      "hotkeysRow4Shortcut": "⌘/Ctrl + /",
+      "hotkeysRow4Desc": "Toggle code block",
+      "hotkeysRow5Shortcut": "⌘/Ctrl + Enter",
+      "hotkeysRow5Desc": "Toggle checklist item",
+      "hotkeysRow6Shortcut": "D",
+      "hotkeysRow6Desc": "Light or dark theme",
+      "linksAndTagsTitle": "Links between pages and tags",
+      "linksAndTagsBody": "You can reference another page with double brackets, tag topics in text, and use normal wiki links. On save the system updates the “who links to whom” map and tag lists — so it is easier to search and build overviews (including backlinks: who links to this page)."
+    }
+  }
+}

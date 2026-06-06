@@ -1,0 +1,16 @@
+# Build and run API from monorepo root: docker build -f docker/Dockerfile.api .
+FROM node:20-bookworm-slim
+WORKDIR /app
+RUN corepack enable && corepack prepare pnpm@9.15.9 --activate
+
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json ./
+COPY packages ./packages
+COPY apps ./apps
+
+RUN pnpm install --frozen-lockfile
+RUN pnpm --filter api build
+
+ENV NODE_ENV=production
+WORKDIR /app/apps/api
+EXPOSE 3001
+CMD ["node", "dist/main.js"]
